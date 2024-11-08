@@ -1,33 +1,61 @@
 {% load django_browser_reload %}
 {% load static %}
 
-<!doctype html>
-<html lang="en">
-
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="GitHub Codespaces ♥️ Django">
-    <meta name="author" content="GitHub Codespaces">
-    <meta name="generator" content="GitHub Codespaces">
-    <meta name="theme-color" content="#000000">
-    <title>{% block title %}{{ title }} | GitHub Codespaces ♥️ Django{% endblock %}</title>
-    
-    <link rel="stylesheet" href="{% static 'main.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Estoque de Livros - CELPI</title>
+    <link rel="stylesheet" href="styles.css"> <!-- link para o css -->
 </head>
-
 <body>
-    <div class="App">
-        <header class="App-header">
-            <img src="{% static 'Octocat.png' %}" class="App-logo" alt="logo" />
-            <p>
-                GitHub Codespaces <span class="heart">♥️</span> Django
-            </p>
-            <p class="small">
-                Edit <code>hello_world/templates/index.html</code> and see changes live!
-            </p>
-        </header>
-    </div>
-</body>
 
+    <!-- cabeçalho -->
+    <header>
+        <h1>Sistema de Estoque de Livros - CELPI</h1>
+    </header>
+
+    <!-- formulário de entrada/saída de livros -->
+    <section>
+        <h2>Registrar Entrada/Saída de Livro</h2>
+        <form id="bookForm">
+            <label for="title">Título do Livro:</label>
+            <input type="text" id="title" name="title" required>
+
+            <label for="author">Autor:</label>
+            <input type="text" id="author" name="author" required>
+
+            <label for="quantity">Quantidade:</label>
+            <input type="number" id="quantity" name="quantity" required>
+
+            <label for="operation">Operação:</label>
+            <select id="operation" name="operation" required>
+                <option value="entrada">Entrada</option>
+                <option value="saida">Saída</option>
+            </select>
+
+            <button type="submit">Registrar</button>
+        </form>
+    </section>
+
+    <!-- tabela de estoque -->
+    <section>
+        <h2>Estoque de Livros</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Título</th>
+                    <th>Autor</th>
+                    <th>Quantidade</th>
+                </tr>
+            </thead>
+            <tbody id="bookList">
+                <!-- linhas de livros serão adicionadas aqui dinamicamente -->
+            </tbody>
+        </table>
+    </section>
+
+</body>
 </html>
